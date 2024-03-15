@@ -41,3 +41,37 @@ export const getReadmeTable = async ({
     rows: rowMapper(rows, name),
   };
 };
+
+const socialMedias = ["twitter", "github", "linkedin", "medium"];
+
+export const fixLinks = (description: string): string => {
+  const links = description.match(/https?:\/\/[^\s]+/g);
+  const markdownLinks = description.match(/\[([^\]]+)\]\(([^)]+)\)/g);
+  if (!links) return description;
+  links.forEach((link) => {
+    const isMarkdownLink = markdownLinks?.find((mdLink) =>
+      mdLink.includes(link)
+    );
+    if (isMarkdownLink) {
+      description = description.replace(
+        isMarkdownLink,
+        `**${isMarkdownLink}**`
+      );
+      return description;
+    }
+
+    const linkText = socialMedias.find((media) => link.includes(media)) || link;
+    const isEmail = link.includes("@");
+    if (isEmail) {
+      if (link.includes("mailto:")) return;
+      description = description.replace(
+        link,
+        `**[${linkText}](${`mailto:${link}`})**`
+      );
+      return;
+    }
+
+    description = description.replace(link, `**[${linkText}](${link})**`);
+  });
+  return description;
+};

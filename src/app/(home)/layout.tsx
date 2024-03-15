@@ -1,11 +1,5 @@
-import Tabs from "@/components/layouts/Tabs";
 import type { PropsWithChildren } from "react";
 
 export default function Layout({ children }: PropsWithChildren<unknown>) {
-  return (
-    <div>
-      <Tabs />
-      {children}
-    </div>
-  );
+  return <div className="w-full p-3 flex flex-col">{children}</div>;
 }

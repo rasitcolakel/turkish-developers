@@ -25,13 +25,7 @@ export async function GET(req: NextRequest) {
   const promises = lists.map((list) => getReadmeTable(list));
 
   const responses = await Promise.all(promises);
-
-  const data = responses.reduce((acc, response) => {
-    return {
-      ...acc,
-      [response.rows[0].listName]: response.rows,
-    };
-  }).rows;
+  const data = responses.map((response) => response.rows).flat();
 
   return new Response(
     JSON.stringify({

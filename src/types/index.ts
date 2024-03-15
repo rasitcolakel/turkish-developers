@@ -9,4 +9,5 @@ export type TableRow = {
 export type List = {
   name: string;
   link: string;
+  title: string;
 };
