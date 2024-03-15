@@ -9,21 +9,21 @@ export const metadata: Metadata = {
 };
 
 const getDevelopers = async () => {
-  const response = await fetch("http://localhost:3000/api/lists");
+  const response = await fetch(`${process.env.API_URL}/lists`);
   const data = await response.json();
   return data as { data: TableRow[] };
 };
 
 export default async function Page() {
-  // const { data } = await getDevelopers();
+  const { data } = await getDevelopers();
 
-  // return (
-  //   <div className="container">
-  //     <div className="w-full">
-  //       <DataTable data={data} columns={columns} />
-  //     </div>
-  //   </div>
-  // );
+  return (
+    <div className="container">
+      <div className="w-full">
+        <DataTable data={data} columns={columns} />
+      </div>
+    </div>
+  );
 
   return <div className="container"></div>;
 }
