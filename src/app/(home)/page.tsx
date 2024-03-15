@@ -15,13 +15,15 @@ const getDevelopers = async () => {
 };
 
 export default async function Page() {
-  const { data } = await getDevelopers();
+  // const { data } = await getDevelopers();
 
-  return (
-    <div className="container">
-      <div className="w-full">
-        <DataTable data={data} columns={columns} />
-      </div>
-    </div>
-  );
+  // return (
+  //   <div className="container">
+  //     <div className="w-full">
+  //       <DataTable data={data} columns={columns} />
+  //     </div>
+  //   </div>
+  // );
+
+  return <div className="container"></div>;
 }
