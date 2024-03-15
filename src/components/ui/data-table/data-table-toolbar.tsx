@@ -25,8 +25,7 @@ export function DataTableToolbar<TData>({
     <div className="flex items-center justify-between">
       <div className="flex items-center justify-between flex-1">
         <Tabs
-          defaultValue=""
-          className="w-[400px]"
+          className="p-0"
           value={
             (table.getColumn("listName")?.getFilterValue() as string) ?? ""
           }
@@ -37,6 +36,7 @@ export function DataTableToolbar<TData>({
               onClick={() => {
                 setListFilter("");
               }}
+              className="text-xs lg:text-sm m-0"
             >
               Tümü
             </TabsTrigger>
@@ -47,6 +47,7 @@ export function DataTableToolbar<TData>({
                 onClick={() => {
                   setListFilter(list.name);
                 }}
+                className="text-xs lg:text-sm m-0"
               >
                 {list.title}
               </TabsTrigger>
@@ -63,7 +64,7 @@ export function DataTableToolbar<TData>({
           onChange={(event) =>
             table.getColumn("fullName")?.setFilterValue(event.target.value)
           }
-          className="h-8 w-[150px] lg:w-[250px]"
+          className="h-8 w-[100px] lg:w-[300px]"
         />
         {isFiltered && (
           <Button

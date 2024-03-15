@@ -10,4 +10,5 @@ export type List = {
   name: string;
   link: string;
   title: string;
+  repoLink: string;
 };
